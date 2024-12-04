@@ -6,14 +6,17 @@ use App\Models\Note;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id = $request->id;
+        $notes = note::select('id','subject')->where(['user_id'=>$id,'delete_flag'=>0])->orderByDesc('created_at')->get();
+        return $notes;
     }
 
     /**
@@ -35,9 +38,10 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Note $note)
+    public function note(Note $note)
     {
-        //
+
+       return $note;
     }
 
     /**
