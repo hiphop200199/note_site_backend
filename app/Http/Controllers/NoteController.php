@@ -14,7 +14,7 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-        Note::getList($request->id);
+       return  Note::getList($request->id);
     }
 
     /**
@@ -38,7 +38,7 @@ class NoteController extends Controller
      */
     public function note(Note $note)
     {
-        Note::get($note);
+       return Note::get($note);
     }
 
     /**
