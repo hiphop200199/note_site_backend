@@ -9,5 +9,6 @@ Route::get('/', function () {
 
 Route::get('/notes',[NoteController::class,'index']);
 Route::get('/note/{id}',[NoteController::class,'note']);
+Route::post('/add',[NoteController::class,'add']);
 
 require __DIR__.'/auth.php';

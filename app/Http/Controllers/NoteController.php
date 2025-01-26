@@ -20,9 +20,9 @@ class NoteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
+        return Note::add($request->user_id,$request->subject,$request->content,$request->date,$errNo);
     }
 
     /**
