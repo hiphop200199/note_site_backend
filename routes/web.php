@@ -8,6 +8,6 @@ Route::get('/', function () {
 });
 
 Route::get('/notes',[NoteController::class,'index']);
-Route::get('/note/{note}',[NoteController::class,'note']);
+Route::get('/note/{id}',[NoteController::class,'note']);
 
 require __DIR__.'/auth.php';

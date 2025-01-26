@@ -36,9 +36,9 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function note(Note $note)
+    public function note($id)
     {
-       return Note::get($note);
+       return Note::get($id);
     }
 
     /**
