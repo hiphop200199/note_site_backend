@@ -1,23 +1,20 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
     protected $guarded = [];
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
-    public function note_tags()
-    {
-        return $this->hasMany(Note_tag::class);
-    }
-    public function note_images()
-    {
-        return $this->hasMany(Note_image::class);
-    }
+   public static function getList($id)
+   {
+    return DB::statement('CALL Note_SP_GetList(?)',[$id]);
+   }
+   public static function get($id)
+   {
+    return DB::statement('CALL Note_SP_Get(?)',[ $id]);
+   }
+
 }
