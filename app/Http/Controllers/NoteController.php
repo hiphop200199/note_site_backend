@@ -14,7 +14,7 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-       return DB::statement('CALL Note_SP_GetList',[ $request->id]);
+       return DB::statement('CALL Note_SP_GetList(?)',[ $request->id]);
     }
 
     /**
@@ -38,8 +38,7 @@ class NoteController extends Controller
      */
     public function note(Note $note)
     {
-
-       return $note;
+        return DB::statement('CALL Note_SP_Get(?)',[ $note]);
     }
 
     /**
