@@ -10,11 +10,11 @@ class Note extends Model
 
    public static function getList($id)
    {
-    return DB::statement('CALL Note_SP_GetList(?)',[$id]);
+    return DB::select('CALL Note_SP_GetList(?)',[$id]);
    }
    public static function get($id)
    {
-    return DB::statement('CALL Note_SP_Get(?)',[ $id]);
+    return DB::select('CALL Note_SP_Get(?)',[ $id]);
    }
 
 }
