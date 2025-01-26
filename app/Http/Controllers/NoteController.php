@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
@@ -14,9 +14,7 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-        $id = $request->id;
-        $notes = note::select('id','subject')->where(['user_id'=>$id,'delete_flag'=>0])->orderByDesc('created_at')->get();
-        return $notes;
+       return DB::statement('CALL Note_SP_GetList',[ $request->id]);
     }
 
     /**
