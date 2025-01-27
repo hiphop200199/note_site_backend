@@ -18,7 +18,7 @@ class Note extends Model
    }
    public static function add($user_id,$subject,$content,$date,&$errNo)
    {
-    return DB::statement('CALL Note_SP_Add(?,?,?,?,?)',[ $user_id,$subject,$content,$date,$errNo]);
+    return DB::select('CALL Note_SP_Add(?,?,?,?,@rtn)',[ $user_id,$subject,$content,$date,$errNo]);
    }
 
 }
