@@ -16,9 +16,17 @@ class Note extends Model
    {
     return DB::select('CALL Note_SP_Get(?)',[ $id]);
    }
-   public static function add($user_id,$subject,$content,$date,&$errNo)
+   public static function add($user_id,$subject,$content,$date)
    {
-    return DB::select('CALL Note_SP_Add(?,?,?,?,@rtn)',[ $user_id,$subject,$content,$date,$errNo]);
+    DB::select('CALL Note_SP_Add(?,?,?,?,@rtn)',[ $user_id,$subject,$content,$date]);
+
+    return DB::select('select @rtn as rtn');
+
+   }
+   public static function del($id)
+   {
+     DB::select('CALL Note_SP_Delete(?,@rtn)',[ $id]);
+    return DB::select('select @rtn as rtn');
    }
 
 }

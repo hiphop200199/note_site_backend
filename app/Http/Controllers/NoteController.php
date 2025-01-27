@@ -22,7 +22,7 @@ class NoteController extends Controller
 
     public function add(Request $request)
     {
-        return Note::add($request->user_id,$request->subject,$request->content,$request->date,$errNo);
+        return Note::add($request->user_id,$request->subject,$request->content,$request->date);
     }
 
 
@@ -31,8 +31,8 @@ class NoteController extends Controller
 
     }
 
-    public function delete(Note $note)
+    public function delete(Request $request)
     {
-
+        return Note::del($request->id);
     }
 }
